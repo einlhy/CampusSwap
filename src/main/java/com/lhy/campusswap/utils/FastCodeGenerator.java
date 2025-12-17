@@ -2,6 +2,7 @@ package com.lhy.campusswap.utils;
 
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  * ClassName: FastGenerator
@@ -24,7 +25,7 @@ public class FastCodeGenerator {
                     builder.author("LHY")        // 设置作者
                             .outputDir(System.getProperty("user.dir") + "/src/main/java") // 输出目录
                             .disableOpenDir()          // 禁止打开输出目录
-                            .commentDate("2025-11-25"); // 注释日期
+                            .commentDate("2025-12-03"); // 注释日期
                 })
                 // 2. 包配置
                 .packageConfig(builder -> {
@@ -34,11 +35,12 @@ public class FastCodeGenerator {
                             .service("service")
                             .serviceImpl("service.impl")
                             .mapper("mapper")
+                            .xml("../../../resources/mapper") // 修改XML文件输出目录
                             .controller("controller");
                 })
                 // 3. 策略配置
                 .strategyConfig(builder -> {
-                    builder.addInclude("admin","category","conversation","favorite","goods","message","order","report","system_config","trade_comment") // 设置需要生成的表名
+                    builder.addInclude("role","permission","user_role","role_permission") // 设置需要生成的表名
 //                            .addTablePrefix("t_", "sys_") // 设置过滤表前缀
                             // Entity 策略配置
                             .entityBuilder()

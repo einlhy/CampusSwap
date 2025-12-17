@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author LHY
  * @since 2025-11-25
  */
-public interface ConversationService {
+public interface ConversationService  {
 
 }

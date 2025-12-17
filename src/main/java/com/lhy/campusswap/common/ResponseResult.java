@@ -8,13 +8,17 @@ package com.lhy.campusswap.common;
  * @Author LHY
  * @Create 2025/11/27 23:24
  */
+
+
+import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 
 /**
  * 统一API响应结果封装
  * @param <T> 数据类型
  */
-public class Response<T> implements Serializable {
+public class ResponseResult<T> implements Serializable {
     private static final long serialVersionUID = 1L;
 
     // 核心字段
@@ -28,11 +32,11 @@ public class Response<T> implements Serializable {
     private String traceId;
 
     // 构造方法
-    public Response() {
+    public ResponseResult() {
         this.timestamp = System.currentTimeMillis();
     }
 
-    public Response(Integer code, String message, T data) {
+    public ResponseResult(Integer code, String message, T data) {
         this.code = code;
         this.message = message;
         this.data = data;
@@ -41,63 +45,72 @@ public class Response<T> implements Serializable {
 
     // ========== 成功响应方法 ==========
 
-    public static <T> Response<T> success() {
-        return new Response<>(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMessage(), null);
+    public static <T> ResponseResult<T> success() {
+        return new ResponseResult<>(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMessage(), null);
     }
 
-    public static <T> Response<T> success(T data) {
-        return new Response<>(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMessage(), data);
+    public static <T> ResponseResult<T> success(String message) {
+        return new ResponseResult<>(ResultCode.SUCCESS.getCode(), message, null);
     }
 
-    public static <T> Response<T> success(String message, T data) {
-        return new Response<>(ResultCode.SUCCESS.getCode(), message, data);
+    public static <T> ResponseResult<T> success(T data) {
+        return new ResponseResult<>(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMessage(), data);
+    }
+
+    public static <T> ResponseResult<T> success(String message, T data) {
+        return new ResponseResult<>(ResultCode.SUCCESS.getCode(), message, data);
     }
 
     // ========== 失败响应方法 ==========
 
-    public static <T> Response<T> error() {
+    public static <T> ResponseResult<T> error() {
         return error(ResultCode.INTERNAL_SERVER_ERROR);
     }
 
-    public static <T> Response<T> error(ResultCode resultCode) {
+    public static <T> ResponseResult<T> error(ResultCode resultCode) {
         return error(resultCode.getCode(), resultCode.getMessage());
     }
 
-    public static <T> Response<T> error(String message) {
+    public static <T> ResponseResult<T> error(String message) {
         return error(ResultCode.INTERNAL_SERVER_ERROR.getCode(), message);
     }
 
-    public static <T> Response<T> error(Integer code, String message) {
-        return new Response<>(code, message, null);
+    public static <T> ResponseResult<T> error(Integer code, String message) {
+        return new ResponseResult<>(code, message, null);
     }
 
-    public static <T> Response<T> error(ResultCode resultCode, String customMessage) {
+    public static <T> ResponseResult<T> error(Integer code, String message, T data) {
+        return new ResponseResult<>(code, message, data);
+    }
+
+    public static <T> ResponseResult<T> error(ResultCode resultCode, String customMessage) {
         return error(resultCode.getCode(), customMessage);
     }
 
+
     // ========== 链式调用方法 ==========
 
-    public Response<T> code(Integer code) {
+    public ResponseResult<T> code(Integer code) {
         this.code = code;
         return this;
     }
 
-    public Response<T> message(String message) {
+    public ResponseResult<T> message(String message) {
         this.message = message;
         return this;
     }
 
-    public Response<T> data(T data) {
+    public ResponseResult<T> data(T data) {
         this.data = data;
         return this;
     }
 
-    public Response<T> path(String path) {
+    public ResponseResult<T> path(String path) {
         this.path = path;
         return this;
     }
 
-    public Response<T> traceId(String traceId) {
+    public ResponseResult<T> traceId(String traceId) {
         this.traceId = traceId;
         return this;
     }

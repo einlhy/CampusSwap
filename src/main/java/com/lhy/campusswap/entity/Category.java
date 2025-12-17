@@ -46,4 +46,10 @@ public class Category implements Serializable {
      */
     @TableField("sort")
     private Integer sort;
+
+    /**
+     * 状态（0启用 1禁用）
+     */
+    @TableField("status")
+    private Integer status;
 }

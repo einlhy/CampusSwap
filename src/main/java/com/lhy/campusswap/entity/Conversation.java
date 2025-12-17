@@ -1,10 +1,10 @@
 package com.lhy.campusswap.entity;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,14 +26,14 @@ public class Conversation implements Serializable {
     /**
      * 较小的用户ID
      */
-    @TableField("user1_id")
-    private Long user1Id;
+    @TableField("user_id")
+    private Long userId;
 
     /**
      * 较大的用户ID
      */
-    @TableField("user2_id")
-    private Long user2Id;
+    @TableField("target_user_id")
+    private Long targetUserId;
 
     /**
      * 关联商品
@@ -54,8 +54,22 @@ public class Conversation implements Serializable {
     private LocalDateTime lastTime;
 
     /**
-     * 针对user2的未读数
+     * 未读数
      */
     @TableField("unread_count")
     private Integer unreadCount;
+
+    /**
+     * 逻辑删除
+     */
+    @TableField("is_deleted")
+    @TableLogic
+    private Integer isDeleted;
+
+    /**
+     * 版本号
+     */
+    @TableField("version")
+    @Version
+    private Integer version;
 }

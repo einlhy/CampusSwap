@@ -1,9 +1,7 @@
 package com.lhy.campusswap.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import lombok.Getter;
@@ -59,6 +57,13 @@ public class TradeComment implements Serializable {
      */
     @TableField("content")
     private String content;
+
+    /**
+     * 逻辑删除
+     */
+    @TableField("is_deleted")
+    @TableLogic
+    private Integer isDeleted;
 
     @TableField("create_time")
     private LocalDateTime createTime;

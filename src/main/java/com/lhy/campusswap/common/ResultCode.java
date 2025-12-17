@@ -29,7 +29,10 @@ public enum ResultCode {
     // 业务状态码（可根据业务需求扩展）
     BUSINESS_ERROR(1000, "业务异常"),
     VALIDATION_ERROR(1001, "参数校验失败"),
-    DUPLICATE_ERROR(1002, "数据重复");
+    DUPLICATE_ERROR(1002, "数据重复"),
+    USER_NOT_FOUND(1003, "用户不存在"),
+    UPDATE_FAILED(1004, "更新失败"),
+    UPLOAD_FAILED(1005, "文件上传失败");
 
     private final Integer code;
     private final String message;

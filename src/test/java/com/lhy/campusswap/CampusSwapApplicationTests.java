@@ -10,4 +10,8 @@ class CampusSwapApplicationTests {
     void contextLoads() {
     }
 
+    @Test
+    void secretKeyTest() {
+
+    }
 }

@@ -2,6 +2,7 @@ package com.lhy.campusswap.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -28,6 +29,13 @@ public class Favorite implements Serializable {
 
     @TableField("goods_id")
     private Long goodsId;
+
+    /**
+     * 逻辑删除
+     */
+    @TableField("is_deleted")
+    @TableLogic
+    private Integer isDeleted;
 
     /**
      * 收藏时间

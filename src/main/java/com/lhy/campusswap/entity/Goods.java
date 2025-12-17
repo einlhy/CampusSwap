@@ -1,9 +1,7 @@
 package com.lhy.campusswap.entity;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import lombok.Getter;
@@ -54,11 +52,6 @@ public class Goods implements Serializable {
     @TableField("price")
     private Long price;
 
-    /**
-     * 图片JSON数组
-     */
-    @TableField("images")
-    private String images;
 
     /**
      * 分类ID
@@ -101,7 +94,14 @@ public class Goods implements Serializable {
      */
     @TableField("is_deleted")
     @TableLogic
-    private Byte isDeleted;
+    private Integer isDeleted;
+
+    /**
+     * 版本号
+     */
+    @TableField("version")
+    @Version
+    private Integer version;
 
     @TableField("create_time")
     private LocalDateTime createTime;

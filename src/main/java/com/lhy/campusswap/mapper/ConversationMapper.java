@@ -13,6 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2025-11-25
  */
 @Mapper
-public interface ConversationMapper {
+public interface ConversationMapper extends BaseMapper<Conversation> {
 
 }

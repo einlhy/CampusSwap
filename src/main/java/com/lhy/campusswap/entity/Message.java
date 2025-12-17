@@ -2,6 +2,7 @@ package com.lhy.campusswap.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -61,6 +62,13 @@ public class Message implements Serializable {
      */
     @TableField("is_read")
     private Boolean isRead;
+
+    /**
+     * 逻辑删除
+     */
+    @TableField("is_deleted")
+    @TableLogic
+    private Integer isDeleted;
 
     @TableField("create_time")
     private LocalDateTime createTime;

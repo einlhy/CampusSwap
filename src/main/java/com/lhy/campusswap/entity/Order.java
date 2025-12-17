@@ -1,10 +1,10 @@
 package com.lhy.campusswap.entity;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -70,6 +70,20 @@ public class Order implements Serializable {
      */
     @TableField("finish_time")
     private LocalDateTime finishTime;
+
+    /**
+     * 逻辑删除
+     */
+    @TableField("is_deleted")
+    @TableLogic
+    private Integer isDeleted;
+
+    /**
+     * 版本号
+     */
+    @TableField("version")
+    @Version
+    private Integer version;
 
     @TableField("create_time")
     private LocalDateTime createTime;
